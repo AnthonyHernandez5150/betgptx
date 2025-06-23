@@ -1,6 +1,17 @@
-import React, { useState, useRef, useEffect } from "react";
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, FlatList, KeyboardAvoidingView, Platform, SafeAreaView } from "react-native";
 import { useAuth } from "@/hooks/useAuth";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  FlatList,
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 const COLORS = {
   background: "#f6f8fa",
@@ -14,11 +25,17 @@ const COLORS = {
   headerText: "#fff",
 };
 
-const DUMMY_AVATAR = "https://ui-avatars.com/api/?name=User&background=1e90ff&color=fff&rounded=true&size=64";
-const AI_AVATAR = "https://ui-avatars.com/api/?name=AI&background=21c065&color=fff&rounded=true&size=64";
+const DUMMY_AVATAR =
+  "https://ui-avatars.com/api/?name=User&background=1e90ff&color=fff&rounded=true&size=64";
+const AI_AVATAR =
+  "https://ui-avatars.com/api/?name=AI&background=21c065&color=fff&rounded=true&size=64";
 
 const initialMessages = [
-  { id: "1", sender: "ai", text: "Hi! I’m BetGPT, your football betting assistant. Ask me anything about teams, matches, or stats!" },
+  {
+    id: "1",
+    sender: "ai",
+    text: "Hi! I’m BetGPT, your football betting assistant. Ask me anything about teams, matches, or stats!",
+  },
 ];
 
 export default function HomeScreen() {
@@ -42,19 +59,40 @@ export default function HomeScreen() {
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
-        { id: Date.now().toString(), sender: "ai", text: "[AI is thinking... connect me to your backend for real answers!]" },
+        {
+          id: Date.now().toString(),
+          sender: "ai",
+          text: "[AI is thinking... connect me to your backend for real answers!]",
+        },
       ]);
     }, 1000);
   };
 
   const renderMessage = ({ item }: any) => (
-    <View style={[styles.messageRow, item.sender === "user" ? styles.userRow : styles.aiRow]}>
+    <View
+      style={[
+        styles.messageRow,
+        item.sender === "user" ? styles.userRow : styles.aiRow,
+      ]}
+    >
       <Image
         source={{ uri: item.sender === "user" ? DUMMY_AVATAR : AI_AVATAR }}
         style={styles.avatar}
       />
-      <View style={[styles.bubble, item.sender === "user" ? styles.userBubble : styles.aiBubble]}>
-        <Text style={[styles.bubbleText, item.sender === "user" ? styles.userText : styles.aiText]}>{item.text}</Text>
+      <View
+        style={[
+          styles.bubble,
+          item.sender === "user" ? styles.userBubble : styles.aiBubble,
+        ]}
+      >
+        <Text
+          style={[
+            styles.bubbleText,
+            item.sender === "user" ? styles.userText : styles.aiText,
+          ]}
+        >
+          {item.text}
+        </Text>
       </View>
     </View>
   );
@@ -69,7 +107,10 @@ export default function HomeScreen() {
         <View style={styles.container}>
           {/* Header */}
           <View style={styles.header}>
-            <Image source={require("../../assets/images/icon.png")} style={styles.logo} />
+            <Image
+              source={require("../../assets/images/icon.png")}
+              style={styles.logo}
+            />
             <Text style={styles.headerTitle}>BetGPTx</Text>
             <Image source={{ uri: DUMMY_AVATAR }} style={styles.headerAvatar} />
           </View>

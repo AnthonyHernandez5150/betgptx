@@ -1,11 +1,19 @@
 import { useAuth } from "@/hooks/useAuth";
 import { usePreferences } from "@/hooks/usePreferences";
 import { Picker } from "@react-native-picker/picker";
-import { useRouter } from "expo-router";
 import * as ImagePicker from "expo-image-picker";
+import { useRouter } from "expo-router";
 import * as SecureStore from "expo-secure-store";
 import React, { useEffect, useState } from "react";
-import { Button, Image, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Button,
+  Image,
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 const LEAGUES = [
   { label: "Premier League", value: "premier-league" },
@@ -85,8 +93,17 @@ export default function ProfileScreen() {
         {profilePic ? (
           <Image source={{ uri: profilePic }} style={styles.profilePic} />
         ) : (
-          <View style={[styles.profilePic, { backgroundColor: '#eee', justifyContent: 'center', alignItems: 'center' }]}> 
-            <Text style={{ fontSize: 32, color: '#aaa' }}>👤</Text>
+          <View
+            style={[
+              styles.profilePic,
+              {
+                backgroundColor: "#eee",
+                justifyContent: "center",
+                alignItems: "center",
+              },
+            ]}
+          >
+            <Text style={{ fontSize: 32, color: "#aaa" }}>👤</Text>
           </View>
         )}
       </TouchableOpacity>
@@ -153,7 +170,7 @@ const styles = StyleSheet.create({
     borderRadius: 48,
     marginBottom: 8,
     borderWidth: 2,
-    borderColor: '#ccc',
-    backgroundColor: '#fff',
+    borderColor: "#ccc",
+    backgroundColor: "#fff",
   },
 });
